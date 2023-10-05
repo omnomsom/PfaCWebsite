@@ -4,12 +4,12 @@ const {
   getAnimals,
   updateAnimal,
   deleteAnimal,
-  setAnimal,
+  createAnimal,
 } = require("../controllers/animalController");
 
 router.get("/", getAnimals);
 
-router.post("/", setAnimal);
+router.post("/", createAnimal);
 
 router.put("/:id", updateAnimal);
 
