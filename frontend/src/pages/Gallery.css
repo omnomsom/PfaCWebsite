@@ -1,0 +1,19 @@
+.gallery{
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 22fr));
+    gap: 3rem; /* Adjust the gap as needed */
+}
+
+.gallery-wrapper{
+  padding-bottom: 3rem;
+
+}
+
+@media (max-width:50em) {
+  .gallery-wrapper{
+    padding-inline: 1rem;
+
+  }
+  
+}
+

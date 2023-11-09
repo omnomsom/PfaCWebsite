@@ -1,0 +1,35 @@
+.add-animal-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .add-animal-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .add-animal-form input,
+  .add-animal-form textarea,
+  .add-animal-form button {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .add-animal-form button {
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-animal-form button:hover {
+    background-color: #2980b9;
+  }
+  
