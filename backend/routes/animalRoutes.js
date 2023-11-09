@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getAnimals,
+  getBasicAnimalInfo,
+  getAnimalById,
   updateAnimal,
   deleteAnimal,
   createAnimal,
 } = require("../controllers/animalController");
 
-router.get("/", getAnimals);
+router.get("/", getBasicAnimalInfo);
+router.get("/:id", getAnimalById);
 
 router.post("/", createAnimal);
 

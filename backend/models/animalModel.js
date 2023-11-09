@@ -6,7 +6,7 @@ const animalSchema = new mongoose.Schema({
     required: true,
   },
   age: {
-    type: Number,
+    type: String,
     required: true,
   },
   breed: {
@@ -17,9 +17,27 @@ const animalSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  photo: {
+  photos: [
+    {
+      type: String, // Array of strings to store photo URLs
+      required: true,
+    },
+  ],
+  about: {
     type: String,
-    required: true,
+    default: "No information available about the animal.",
+  },
+  info: {
+    type: String,
+    default: "No additional information available.",
+  },
+  vaccinated: {
+    type: Boolean,
+    default: false,
+  },
+  neutered: {
+    type: Boolean,
+    default: false,
   },
 });
 
