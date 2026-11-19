@@ -1,5 +1,5 @@
 import "./Hero.css";
-import heroimg from "../assets/images/hero.png";
+import heroimg from "../assets/images/Hero.png";
 import PfacLogo from "../assets/images/PfacLogo.png";
 import Paw from "./Paw";
 import { useNavigate } from "react-router-dom";

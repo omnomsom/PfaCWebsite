@@ -73,3 +73,11 @@ This command starts the Node.js and Express.js server.
 ## Usage
 
 Once both the frontend and backend are running, you can access the application by opening your browser and navigating to `http://localhost:3000` (or the specified port in your React development server configuration).
+
+## Hosting the public adoption catalog
+
+Deploy the API first. In Railway, connect this repository and use the repository root with `npm start` as the start command. In the Railway service variables, set `NODE_ENV=production`, `PUBLIC_CATALOG_ONLY=true`, and `MONGO_URI` for the existing database. Catalog-only mode exposes the animal GET routes and disables the animal write and user routes. Generate a public service domain after deployment and check that `/api/animals` returns JSON.
+
+In Cloudflare Pages, connect this same repository and set the root directory to `frontend`, the build command to `npm run build`, and the output directory to `dist`. Set the production build variable `VITE_API_ORIGIN` to the Railway service origin, including `https://`. Use the assigned `pages.dev` domain to verify the gallery, a direct link to an animal detail page, and the photos returned by the API.
+
+The original listings and their photo URLs live in MongoDB. If restoring from a backup, restore the original records before checking image delivery.

@@ -11,10 +11,10 @@ const {
 router.get("/", getBasicAnimalInfo);
 router.get("/:id", getAnimalById);
 
-router.post("/", createAnimal);
-
-router.put("/:id", updateAnimal);
-
-router.delete("/:id", deleteAnimal);
+if (process.env.PUBLIC_CATALOG_ONLY !== "true") {
+  router.post("/", createAnimal);
+  router.put("/:id", updateAnimal);
+  router.delete("/:id", deleteAnimal);
+}
 
 module.exports = router;

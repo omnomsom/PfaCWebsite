@@ -1,7 +1,7 @@
 import "./Animal.css";
 import Line from "../components/Line";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../api";
 import { useParams } from "react-router-dom";
 import Loading from "../assets/images/Loading.gif";
 import Check from "../components/Check";
@@ -12,8 +12,8 @@ function Animal() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/animals/${id}`)
+    api
+      .get(`/animals/${id}`)
       .then((response) => {
         setAnimalData(response.data);
       })

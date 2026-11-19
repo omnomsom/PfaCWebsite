@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../api";
 import Card from "../components/Card";
 import "./Gallery.css";
 
@@ -7,8 +7,8 @@ function Gallery() {
   const [animalData, setAnimalData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/animals/")
+    api
+      .get("/animals/")
       .then((response) => {
         setAnimalData(response.data);
         console.log(response.data);

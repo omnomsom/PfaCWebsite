@@ -14,7 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/animals", require("./routes/animalRoutes"));
-app.use("/api/users", require("./routes/userRoutes"));
+if (process.env.PUBLIC_CATALOG_ONLY !== "true") {
+  app.use("/api/users", require("./routes/userRoutes"));
+}
 
 app.use(errorHandler);
 app.listen(port, () => console.log(`Server started on port ${port}`));
