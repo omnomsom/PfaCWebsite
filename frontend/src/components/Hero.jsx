@@ -27,10 +27,10 @@ function Hero() {
                   }}
                   className=" button"
                 >
-                  adopt now
+                  browse demo animals
                   <Paw />
                 </button>
-                <button className="btn-secondary">learn more</button>
+                <a href="#about" className="btn-secondary">learn more</a>
               </div>
             </div>
             <div className="hero-img">
@@ -39,7 +39,7 @@ function Hero() {
           </div>
         </div>
       </section>
-      <section className="paws-for-a-cause padding-block-700">
+      <section id="about" className="paws-for-a-cause padding-block-700">
         <div className="container">
           <div className="even-columns">
             <div className="paws-img">

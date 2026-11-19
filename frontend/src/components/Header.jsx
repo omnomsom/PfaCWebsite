@@ -2,21 +2,10 @@ import { useState } from "react";
 import "./Header.css";
 import Logo from "../assets/images/Logo.png";
 import { NavLink } from "react-router-dom";
-import Modal from "./Modal";
-import { FaBars, FaXmark, FaRightToBracket } from "react-icons/fa6";
+import { FaBars, FaXmark } from "react-icons/fa6";
 
 function Header() {
-  const [showNavLinks, setShowNavLinks] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -39,6 +28,7 @@ function Header() {
             className={(navData) =>
               navData.isActive ? "links active-link" : "links"
             }
+            end
             to="/"
           >
             home
@@ -47,32 +37,12 @@ function Header() {
             className={(navData) =>
               navData.isActive ? "links active-link" : "links"
             }
-            to="/about"
-          >
-            about us
-          </NavLink>
-          <NavLink
-            className={(navData) =>
-              navData.isActive ? "links active-link" : "links"
-            }
             to="/gallery"
+            onClick={() => setShowMenu(false)}
           >
-            adopt
-          </NavLink>
-          <NavLink
-            className={(navData) =>
-              navData.isActive ? "links active-link" : "links"
-            }
-            to="/contact"
-          >
-            contact us
+            demo animals
           </NavLink>
         </nav>
-        <button className="btn-header" onClick={openModal}>
-          get started
-          <FaRightToBracket />
-        </button>
-        <Modal isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </div>
   );
