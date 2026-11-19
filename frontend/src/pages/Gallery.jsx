@@ -7,17 +7,18 @@ function Gallery() {
     <div className="gallery-wrapper">
       <div className="container">
         <h1 className="f-secondary-heading py-8">
-          Meet the demo animals
+          Find your forever friend today!
         </h1>
         <div className="gallery">
           {demoAnimals.map((animal) => (
             <Card
-              key={animal.id}
-              id={animal.id}
+              key={animal._id}
+              id={animal._id} // Passing the 'id' as a prop to the Card component
               name={animal.name}
               breed={animal.breed}
               age={animal.age}
               gender={animal.gender}
+              photo={animal.photos}
             />
           ))}
         </div>
