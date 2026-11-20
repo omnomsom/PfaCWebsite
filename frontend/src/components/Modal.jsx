@@ -4,10 +4,8 @@ import ModalImg from "../assets/images/Modal.png";
 import { FaXmark } from "react-icons/fa6";
 import Paw from "./Paw";
 
-function Modal({ isOpen, onClose }) {
-  const [isRegistering, setIsRegistering] = useState(true);
-
-  if (!isOpen) return null;
+function Modal({ onClose }) {
+  const [isRegistering, setIsRegistering] = useState(false);
 
   return (
     <div className="overlay">

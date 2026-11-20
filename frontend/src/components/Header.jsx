@@ -41,13 +41,13 @@ function Header() {
             adopt
           </NavLink>
           <Link className="links" to="/#contact" onClick={closeMenu}>contact us</Link>
-          <button className="links mobile-start" type="button" onClick={openModal}>get started</button>
+          <button className="links mobile-start" type="button" onClick={openModal}>sign in</button>
         </nav>
         <button className="btn-header" type="button" onClick={openModal}>
-          get started
+          sign in
           <FaRightToBracket />
         </button>
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
       </div>
     </header>
   );
