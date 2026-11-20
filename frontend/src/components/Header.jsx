@@ -8,12 +8,24 @@ import { FaBars, FaXmark, FaRightToBracket } from "react-icons/fa6";
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [accountName, setAccountName] = useState(null);
   const closeMenu = () => setShowMenu(false);
 
-  function openModal() {
+  function handleAccountAction() {
     closeMenu();
-    setIsModalOpen(true);
+    if (accountName) {
+      setAccountName(null);
+    } else {
+      setIsModalOpen(true);
+    }
   }
+
+  function handleAuthenticated(name) {
+    setAccountName(name);
+    setIsModalOpen(false);
+  }
+
+  const accountAction = accountName ? "sign out" : "sign in";
 
   return (
     <header className="primary-header">
@@ -41,13 +53,19 @@ function Header() {
             adopt
           </NavLink>
           <Link className="links" to="/#contact" onClick={closeMenu}>contact us</Link>
-          <button className="links mobile-start" type="button" onClick={openModal}>sign in</button>
+          <button className="links mobile-start" type="button" onClick={handleAccountAction}>{accountAction}</button>
         </nav>
-        <button className="btn-header" type="button" onClick={openModal}>
-          sign in
+        <button className="btn-header" type="button" onClick={handleAccountAction}>
+          {accountAction}
           <FaRightToBracket />
         </button>
-        {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+        <span className="sr-only" role="status">{accountName && `Signed in as ${accountName}`}</span>
+        {isModalOpen && (
+          <Modal
+            onClose={() => setIsModalOpen(false)}
+            onAuthenticated={handleAuthenticated}
+          />
+        )}
       </div>
     </header>
   );

@@ -81,3 +81,23 @@ Deploy the API first. In Railway, connect this repository and use the repository
 In Cloudflare Pages, connect this same repository and set the root directory to `frontend`, the build command to `npm run build`, and the output directory to `dist`. Set the production build variable `VITE_API_ORIGIN` to the Railway service origin, including `https://`. Use the assigned `pages.dev` domain to verify the gallery, a direct link to an animal detail page, and the photos returned by the API.
 
 The original listings and their photo URLs live in MongoDB. If restoring from a backup, restore the original records before checking image delivery.
+
+
+## Testing account registration locally
+
+Run the API with a separate local MongoDB database and a test JWT secret. From the repository root:
+
+```sh
+MONGO_URI=mongodb://127.0.0.1:27017/pfac_accounts_test \
+PUBLIC_CATALOG_ONLY=false \
+JWT_SECRET="$(node -p 'require("node:crypto").randomBytes(32).toString("hex")')" \
+npm start
+```
+
+In another terminal, start the frontend with accounts enabled. Vite proxies API requests to the local server on port 5000.
+
+```sh
+VITE_ENABLE_ACCOUNTS=true npm run dev --prefix frontend
+```
+
+Open the local site, select **Sign in → Register**, and use sample credentials. The account remains in the test database so you can sign out and sign in again.
