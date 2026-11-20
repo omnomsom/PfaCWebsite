@@ -5,6 +5,8 @@ const hostedPhotoSets = new Map([
   ["654cba99b5d23d6ec8cd4460", { folder: "leela", count: 4 }],
   ["654cbc04b5d23d6ec8cd446c", { folder: "jack", count: 4 }],
   ["654cbdecb20aec82d8ab6e48", { folder: "zorro", count: 5 }],
+  ["654cc27cb20aec82d8ab6e4e", { folder: "frodo", count: 4 }],
+  ["654cc334b20aec82d8ab6e52", { folder: "hero", count: 3 }],
 ]);
 
 function withHostedPhotos(animal) {
