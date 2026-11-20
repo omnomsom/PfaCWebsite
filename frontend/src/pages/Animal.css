@@ -18,13 +18,14 @@
 }
 
 .dog-img {
-    background-color: green;
+  background-color: #e0f2fe;
   border-radius: 1rem;
   overflow: hidden;
   order: -1;
   width: 80vw;
   height: 80vw;
   margin: 0 auto;
+  aspect-ratio: 1;
 }
 
   .dog-img img {
@@ -46,6 +47,7 @@
   width: 60px;
   height: 60px;
   margin-bottom: 5px;
+  border: 0;
   border-radius: 0.5rem;
   overflow: hidden;
   cursor: pointer;
@@ -106,11 +108,6 @@
   font-family: var(--ff-primary);
 }
 
-.info-text span {
-  text-decoration: underline;
-  color: var(--clr-primary);
-}
-
 .non-info-wrapper {
   padding-block: 2rem;
 
@@ -163,8 +160,9 @@
 
   .dog-img {
     
-    width: 500px;
-    height: 500px;
+    width: min(100%, 500px);
+    height: auto;
+    align-self: start;
     overflow: hidden;
   }
 
@@ -220,11 +218,6 @@
 
   .info-text {
     font-family: var(--ff-primary);
-  }
-
-  .info-text span {
-    text-decoration: underline;
-    color: var(--clr-primary);
   }
 
   .carousel {

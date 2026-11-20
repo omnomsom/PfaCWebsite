@@ -209,6 +209,13 @@ body {
 
 
 
+.button,
+.btn-secondary,
+.btn-header,
+button {
+  text-decoration: none;
+}
+
 .button {
   background-color: var(--clr-primary);
   border-style: none;

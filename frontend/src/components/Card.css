@@ -1,12 +1,18 @@
-
-.card{
-    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
-    transition: transform 0.3s ease;
+.card-link {
+    display: block;
+    text-decoration: none;
 }
 
 
-  .card:hover {
-    transform: scale(1.05); /* Enlarge the card on hover */
+.card{
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+  .card-link:hover .card, .card-link:focus-visible .card {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 25px rgba(23, 66, 82, 0.16);
   }
 
 .card-content{

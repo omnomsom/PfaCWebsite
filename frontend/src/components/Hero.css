@@ -1,5 +1,11 @@
-.hero section{
-    background-color: #F2FBFF;
+.hero {
+    background:
+        radial-gradient(ellipse at 85% 45%, #dff4fb, transparent 49%),
+        linear-gradient(145deg, #fff 35%, #f9fcf6 100%);
+}
+
+.hero .hero-img {
+    align-self: center;
 }
 
 .hero h1 span{

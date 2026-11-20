@@ -48,7 +48,7 @@ function Modal({ isOpen, onClose }) {
               </button>
               <p>
                 Already have an account?{" "}
-                <a onClick={() => setIsRegistering(false)}>Sign In</a>
+                <button type="button" className="mode-switch" onClick={() => setIsRegistering(false)}>Sign In</button>
               </p>
             </div>
           ) : (
@@ -74,7 +74,7 @@ function Modal({ isOpen, onClose }) {
               </button>
               <p>
                 Don't have an account?{" "}
-                <a onClick={() => setIsRegistering(true)}>Register</a>
+                <button type="button" className="mode-switch" onClick={() => setIsRegistering(true)}>Register</button>
               </p>
             </div>
           )}

@@ -1,24 +1,31 @@
-import { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useLayoutEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
-import loadingAnimation from "./assets/images/Loading.gif";
+import LoadingAnimation from "./components/LoadingAnimation";
 
 const Gallery = lazy(() => import("./pages/Gallery"));
 const Animal = lazy(() => import("./pages/Animal"));
 
+function ScrollToTop() {
+  const { hash, key } = useLocation();
+
+  useLayoutEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  }, [hash, key]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
-      <Suspense
-        fallback={
-          <div className="container grid min-h-[45vh] place-items-center" role="status">
-            <img className="w-40" src={loadingAnimation} alt="Loading" />
-          </div>
-        }
-      >
+      <Suspense fallback={<LoadingAnimation />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />

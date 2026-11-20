@@ -1,80 +1,55 @@
 import { useState } from "react";
 import "./Header.css";
 import Logo from "../assets/images/Logo.png";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Modal from "./Modal";
 import { FaBars, FaXmark, FaRightToBracket } from "react-icons/fa6";
 
 function Header() {
-  const [showNavLinks, setShowNavLinks] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const closeMenu = () => setShowMenu(false);
 
-  const openModal = () => {
+  function openModal() {
+    closeMenu();
     setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
+  }
 
   return (
-    <div className=" primary-header">
+    <header className="primary-header">
       <div className="container header">
-        <NavLink to="/">
-          <img className="" src={Logo} alt="Logo" />
+        <NavLink to="/" onClick={closeMenu}>
+          <img src={Logo} alt="Paws for a Cause" />
         </NavLink>
-        {showMenu ? (
-          <FaXmark className="close-icon" size={30} onClick={toggleMenu} />
-        ) : (
-          <FaBars className="bar-icon" size={30} onClick={toggleMenu} />
-        )}
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={showMenu ? "Close navigation" : "Open navigation"}
+          aria-expanded={showMenu}
+          aria-controls="primary-nav"
+          onClick={() => setShowMenu(!showMenu)}
+        >
+          {showMenu ? <FaXmark size={30} /> : <FaBars size={30} />}
+        </button>
 
-        <nav id={showMenu ? "hidden-menu" : ""}>
-          <NavLink
-            className={(navData) =>
-              navData.isActive ? "links active-link" : "links"
-            }
-            to="/"
-          >
+        <nav id="primary-nav" className={showMenu ? "is-open" : ""}>
+          <NavLink className={({ isActive }) => isActive ? "links active-link" : "links"} to="/" end onClick={closeMenu}>
             home
           </NavLink>
-          <NavLink
-            className={(navData) =>
-              navData.isActive ? "links active-link" : "links"
-            }
-            to="/about"
-          >
-            about us
-          </NavLink>
-          <NavLink
-            className={(navData) =>
-              navData.isActive ? "links active-link" : "links"
-            }
-            to="/gallery"
-          >
+          <Link className="links" to="/#about" onClick={closeMenu}>about us</Link>
+          <NavLink className={({ isActive }) => isActive ? "links active-link" : "links"} to="/gallery" onClick={closeMenu}>
             adopt
           </NavLink>
-          <NavLink
-            className={(navData) =>
-              navData.isActive ? "links active-link" : "links"
-            }
-            to="/contact"
-          >
-            contact us
-          </NavLink>
+          <Link className="links" to="/#contact" onClick={closeMenu}>contact us</Link>
+          <button className="links mobile-start" type="button" onClick={openModal}>get started</button>
         </nav>
-        <button className="btn-header" onClick={openModal}>
+        <button className="btn-header" type="button" onClick={openModal}>
           get started
           <FaRightToBracket />
         </button>
-        <Modal isOpen={isModalOpen} onClose={closeModal} />
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
-    </div>
+    </header>
   );
 }
 

@@ -1,103 +1,121 @@
-import "./Animal.css";
-import Line from "../components/Line";
-import { useState, useEffect } from "react";
-import { demoAnimals } from "../demoAnimals";
-import { useParams } from "react-router-dom";
-import Loading from "../assets/images/Loading.gif";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import AnimalPhoto from "../components/AnimalPhoto";
 import Check from "../components/Check";
 import Cross from "../components/Cross";
+import Line from "../components/Line";
+import LoadingAnimation from "../components/LoadingAnimation";
+import { useAnimals } from "../useAnimals";
+import "./Animal.css";
 
 function Animal() {
   const { id } = useParams();
-  const animalData = demoAnimals.find((animal) => animal._id === id);
+  const { data: animal, status } = useAnimals(`/animals/${encodeURIComponent(id)}`);
 
-  useEffect(() => {
-    if (animalData) {
-      setMainImage(animalData.photos && animalData.photos[0]);
-      setActiveSmallImage(animalData.photos && animalData.photos[0]);
-    }
-  }, [animalData]);
+  if (status === "loading") return <LoadingAnimation />;
 
-  const [mainImage, setMainImage] = useState(Loading);
-  const [activeSmallImage, setActiveSmallImage] = useState(Loading);
-
-  const handleImageChange = (newImage) => {
-    setMainImage(newImage);
-    setActiveSmallImage(newImage); // Set the active small image when the main image changes
-  };
-
-  if (!animalData) {
-    return <h1>Animal not found</h1>;
+  if (status !== "ready") {
+    return (
+      <main className="container py-8">
+        <h1 className="f-secondary-heading">{status === "missing" ? "Animal not found" : "This profile couldn’t load"}</h1>
+        <Link className="btn-secondary mt-4 inline-block" to="/gallery">Back to the animals</Link>
+      </main>
+    );
   }
 
+  return <AnimalProfile key={id} animal={animal} />;
+}
+
+function AnimalProfile({ animal }) {
+  const [selectedPhoto, setSelectedPhoto] = useState(0);
+  const { name, breed, gender, age, about, info, vaccinated, neutered, photos = [] } = animal;
+
   return (
-    <div className="container">
+    <main className="container pb-12 pt-5">
+      <Link className="btn-secondary inline-block" to="/gallery">Back to the animals</Link>
       <div className="first-section">
         <div className="left-col">
-          <div className="carousel">
-            {animalData.photos &&
-              animalData.photos.map((photo, index) => (
-                <div
+          {photos.length > 1 && (
+            <div className="carousel" aria-label={`Photos of ${name}`}>
+              {photos.map((photo, index) => (
+                <button
+                  type="button"
                   key={index}
-                  className={`small-image ${
-                    activeSmallImage === photo ? "active-img" : ""
-                  }`}
-                  onMouseEnter={() => handleImageChange(photo)}
+                  aria-label={`Show photo ${index + 1}`}
+                  aria-pressed={selectedPhoto === index}
+                  className={`small-image ${selectedPhoto === index ? "active-img" : ""}`}
+                  onClick={() => setSelectedPhoto(index)}
                 >
-                  <img src={photo} alt={`SmallImage${index}`} />
-                </div>
+                  <AnimalPhoto src={photo} alt="" />
+                </button>
               ))}
-          </div>
+            </div>
+          )}
           <div className="dog-img">
-            <img src={mainImage} alt="MainDogImage" />
+            <AnimalPhoto src={photos[selectedPhoto]} alt={name} />
           </div>
         </div>
+
         <div className="right-col">
           <div>
-            <button className="main-heading">{animalData.name}</button>
-            <p className="subheading-caps">Breed</p>
-            <p className="subheading-text">{animalData.breed}</p>
-            <p className="subheading-caps">Sex</p>
-            <p className="subheading-text">{animalData.gender}</p>
-            <p className="subheading-caps">Age</p>
-            <p className="subheading-text">{animalData.age}</p>
+            <h1 className="main-heading">{name}</h1>
+            <dl className="grid grid-cols-2 gap-x-4 sm:grid-cols-3">
+              <div>
+                <dt className="subheading-caps">Breed</dt>
+                <dd className="subheading-text">{breed}</dd>
+              </div>
+              <div>
+                <dt className="subheading-caps">Sex</dt>
+                <dd className="subheading-text">{gender}</dd>
+              </div>
+              <div>
+                <dt className="subheading-caps">Age at listing</dt>
+                <dd className="subheading-text">{age}</dd>
+              </div>
+            </dl>
             <Line />
-            <p className="subheading-caps mt-3">About</p>
-            <p className="rightcol-text mt-1">{animalData.about}</p>
+            <h2 className="subheading-caps mt-3">About</h2>
+            <p className="rightcol-text mt-1">{about}</p>
           </div>
           <div className="non-info-wrapper">
             <div className="btn-wrapper">
-              <button className="button">adopt</button>
-              <button className="btn-secondary">foster</button>
+              <Link className="button" to="/#contact">adopt</Link>
+              <Link className="btn-secondary text-center" to="/#contact">foster</Link>
             </div>
             <p className="info-text">
-              Not sure how this works? <span>Click here.</span>
+              Mention {name} when reaching out to check current availability.
             </p>
           </div>
         </div>
       </div>
-      <div className="second-section flex gap-32  ">
-        <div className=" w-2/3">
-          <p className="my-2 subheading-caps">Rescue Story</p>
-          <p className=" moreinfo-text">{animalData.info}</p>
-        </div>
-        <div>
-          <p className="my-2 subheading-caps">Additional Information</p>
+
+      <div className="second-section grid gap-8 py-6 md:grid-cols-[2fr_1fr]">
+        <section>
+          <h2 className="my-2 subheading-caps">Rescue Story</h2>
+          <p className="moreinfo-text whitespace-pre-line">{info}</p>
+        </section>
+        <section className="rounded-xl bg-sky-50 p-5">
+          <h2 className="my-2 subheading-caps">Additional Information</h2>
           <div className="items-center flex gap-2">
-            {animalData.vaccinated ? <Check /> : <Cross />}
-            <p className="moreinfo-text">
-              {animalData.vaccinated ? "Vaccinated" : "Not Vaccinated"}
-            </p>
+            {vaccinated ? <Check /> : <Cross />}
+            <p className="moreinfo-text">{vaccinated ? "Vaccinated" : "Not Vaccinated"}</p>
           </div>
           <div className="flex items-center gap-2">
-            {animalData.neutered ? <Check /> : <Cross />}
-            <p className="moreinfo-text">
-              {animalData.neutered ? "Neutered" : "Not Neutered"}
-            </p>
+            {neutered ? <Check /> : <Cross />}
+            <p className="moreinfo-text">{neutered ? "Neutered" : "Not Neutered"}</p>
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+
+      <section className="mt-5 rounded-xl border border-sky-100 p-5">
+        <h2 className="f-title">Before you meet {name}</h2>
+        <p className="mt-2 max-w-2xl">
+          Ask about daily walks, time alone, and how {name} handles new people or other pets.
+          If you’re considering fostering, share how long you can offer a home and what your daily routine looks like.
+        </p>
+        <Link className="btn-secondary mt-4 inline-block" to="/#adoption-process">How adoption works</Link>
+      </section>
+    </main>
   );
 }
 

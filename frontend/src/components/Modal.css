@@ -96,9 +96,13 @@ height: 2.5rem;
 padding:1rem;
 }
 
-.right-column .modal-content p a {
-  color:var(--clr-primary);
-  text-decoration: underline;
+.right-column .modal-content .mode-switch {
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: #23758f;
+  font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
 }
 

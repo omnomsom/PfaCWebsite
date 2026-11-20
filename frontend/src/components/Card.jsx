@@ -1,21 +1,15 @@
 import { Link } from "react-router-dom";
 import "./Card.css";
+import AnimalPhoto from "./AnimalPhoto";
 import Male from "../assets/images/Male.png";
-import Female from "../assets/images/Female.png"; // Import the female icon
+import Female from "../assets/images/Female.png";
 
 function Card({ id, name, breed, age, gender, photo }) {
   return (
-    <Link
-      to={`/animal/${id}`}
-      style={{ textDecoration: "none" }}
-      className="card-link"
-    >
-      {" "}
-      {/* Wrap the entire card content in Link */}
+    <Link to={`/animal/${id}`} className="card-link">
       <div className="card rounded-2xl rounded-t-xl bg-white">
         <div className="card-img">
-          <img src={photo[0]} className="w-full object-cover" alt={name} />{" "}
-          {/* Access the first photo URL from the array */}
+          <AnimalPhoto src={photo?.[0]} className="h-full w-full object-cover" alt={name} />
         </div>
         <div className="card-content">
           <div>

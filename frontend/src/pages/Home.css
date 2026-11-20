@@ -1,0 +1,186 @@
+#about,
+#contact,
+#adoption-process {
+  scroll-margin-top: 7rem;
+}
+
+.home-section {
+  padding-block: clamp(2.75rem, 6vw, 5rem);
+}
+
+.home-section-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.home-section-header p,
+.home-contact p {
+  margin-top: 0.75rem;
+  max-width: 50ch;
+  font-size: 1.05rem;
+}
+
+.home-dogs {
+  background: linear-gradient(180deg, #f4fcff, #fff);
+}
+
+.home-dog-grid,
+.home-steps,
+.home-options {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+.home-process {
+  background: #eef9fd;
+}
+
+.home-steps,
+.home-options {
+  margin-top: 1.5rem;
+}
+
+.home-steps {
+  list-style: none;
+}
+
+.home-step,
+.home-option {
+  border-radius: 1.125rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.home-step {
+  border: 1px solid #d9edf5;
+  background: #fff;
+}
+
+.home-step-number {
+  display: inline-grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: #dff1f8;
+  color: #21556a;
+  font-weight: 700;
+}
+
+.home-step p,
+.home-option p {
+  margin-top: 0.5rem;
+}
+
+.home-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.home-option > svg {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.home-option-adoption {
+  background: #eaf8fc;
+  color: #184f64;
+}
+
+.home-option-fostering {
+  background: #fbf1dd;
+  color: #694a22;
+}
+
+.home-option p {
+  flex: 1;
+}
+
+.home-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.home-option .home-action,
+.home-contact .home-action {
+  margin-top: 1.25rem;
+}
+
+.home-faq {
+  background: #f5fafc;
+}
+
+.home-faq-layout,
+.home-questions {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-questions details {
+  padding: 1rem 1.25rem;
+  border: 1px solid #d9edf5;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.home-questions summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.home-questions p {
+  margin-top: 0.75rem;
+}
+
+.home-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border-radius: 1.5rem;
+  background: linear-gradient(120deg, #173e50, #215e76);
+  color: white;
+}
+
+.home-contact .home-action {
+  background: #fff;
+  color: #174a5e;
+}
+
+.home-contact-paw {
+  color: #9cd6eb;
+  opacity: 0.35;
+  font-size: clamp(3rem, 13vw, 9rem);
+  transform: rotate(-14deg);
+}
+
+@media (min-width: 38em) {
+  .home-dog-grid,
+  .home-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-options,
+  .home-faq-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 27em) {
+  .home-contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-contact-paw {
+    display: none;
+  }
+}
