@@ -44,6 +44,9 @@ function AnimalProfile({ animal }) {
                   aria-label={`Show photo ${index + 1}`}
                   aria-pressed={selectedPhoto === index}
                   className={`small-image ${selectedPhoto === index ? "active-img" : ""}`}
+                  onPointerEnter={(event) => {
+                    if (event.pointerType !== "touch") setSelectedPhoto(index);
+                  }}
                   onClick={() => setSelectedPhoto(index)}
                 >
                   <AnimalPhoto src={photo} alt="" />

@@ -1,9 +1,10 @@
 import loadingAnimation from "../assets/images/Loading.gif";
+import "./LoadingAnimation.css";
 
 export default function LoadingAnimation() {
   return (
-    <div className="grid min-h-48 place-items-center" role="status">
-      <img className="w-40" src={loadingAnimation} alt="Loading" />
+    <div className="loading-animation" role="status">
+      <img src={loadingAnimation} alt="Loading" />
     </div>
   );
 }

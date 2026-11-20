@@ -1,0 +1,10 @@
+.loading-animation {
+  display: grid;
+  min-block-size: clamp(16rem, 54svh, 36rem);
+  place-items: center;
+}
+
+.loading-animation img {
+  inline-size: min(100%, clamp(16rem, 70vw, 32rem), 72svh);
+  block-size: auto;
+}

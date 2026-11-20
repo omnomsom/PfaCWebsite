@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 import Card from "../components/Card";
 import LoadingAnimation from "../components/LoadingAnimation";
 import { useAnimals } from "../useAnimals";
@@ -26,12 +27,14 @@ function Gallery() {
             <div className="my-6 flex flex-wrap items-end justify-between gap-4">
               <label className="grid w-full max-w-sm gap-1 font-medium">
                 Search by name or breed
-                <input
-                  className="rounded-lg border border-sky-200 px-4 py-2"
-                  type="search"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                />
+                <span className="gallery-search">
+                  <FaMagnifyingGlass aria-hidden="true" />
+                  <input
+                    type="search"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                  />
+                </span>
               </label>
               <p aria-live="polite">{matches.length} {matches.length === 1 ? "dog" : "dogs"}</p>
             </div>

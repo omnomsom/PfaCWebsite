@@ -17,3 +17,34 @@
   
 }
 
+
+.gallery-search {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  padding-inline: 1rem;
+  border: 1px solid #b8ddea;
+  border-radius: 100vmax;
+  background: #f2fbff;
+  color: #23758f;
+}
+
+.gallery-search:focus-within {
+  border-color: #23758f;
+  box-shadow: 0 0 0 3px #d9f3ff;
+}
+
+.gallery-search svg {
+  flex: none;
+}
+
+.gallery-search input {
+  flex: 1;
+  min-width: 0;
+  padding-block: 0.7rem;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--clr-text);
+}
