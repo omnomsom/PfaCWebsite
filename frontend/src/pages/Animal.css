@@ -71,7 +71,7 @@
 }
 .main-heading {
   color: #000;
-  font-family: var(--ff-primary-bold);
+  font-weight: 700;
   font-size: 2rem;
   background-color: #f2fbff;
   border: none;
@@ -85,13 +85,13 @@
 .subheading-caps {
   color: #979797;
   text-transform: uppercase;
-  font-family: var(--ff-primary-bold);
+  font-weight: 700;
   font-size: 1rem;
 }
 
 .subheading-text {
   color: #000;
-  font-family: var(--ff-primary-medium);
+  font-weight: 500;
   font-size: 1.5rem;
   margin-bottom: 0.5em;
 }
@@ -187,7 +187,7 @@
 
   .main-heading {
     color: #000;
-    font-family: var(--ff-primary-bold);
+    font-weight: 700;
     font-size: 2rem;
     background-color: #f2fbff;
     border: none;
@@ -201,13 +201,13 @@
   .subheading-caps {
     color: #979797;
     text-transform: uppercase;
-    font-family: var(--ff-primary-bold);
+    font-weight: 700;
     font-size: 1rem;
   }
 
   .subheading-text {
     color: #000;
-    font-family: var(--ff-primary-medium);
+    font-weight: 500;
     font-size: 1.5rem;
     margin-bottom: 0.5em;
   }

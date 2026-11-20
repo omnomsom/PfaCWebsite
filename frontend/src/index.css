@@ -3,25 +3,24 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'TTNorms';
+  font-family: 'TT Norms';
   src: url('./assets/fonts/ttnorms-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'TTNorms-Medium';
+  font-family: 'TT Norms';
   src: url('./assets/fonts/ttnorms-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
 }
 
-
 @font-face {
-  font-family: 'TTNorms-Bold';
+  font-family: 'TT Norms';
   src: url('./assets/fonts/ttnorms-bold.woff2') format('woff2');
-}
-
-
-@font-face {
-  font-family: 'VisbyRounded';
-  src: url('./assets/fonts/VisbyRoundCF-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
 }
 
 :root {
@@ -33,14 +32,7 @@
   --clr-secondary: #f7f1e5;
   --clr-accent: #FFAA00;
 
-  --ff-primary: TTNorms;
-  --ff-primary-bold: TTNorms-Bold;
-  --ff-primary-medium: TTNorms-Medium;
-  --ff-secondary: VisbyRounded;
-
-  --ff-body: var(--ff-primary);
-  --ff-heading: var(--ff-primary-bold);
-  --ff-button: var(--ff-secondary);
+  --ff-primary: 'TT Norms', system-ui, sans-serif;
 
   --fs-300: 0.8125rem;
   --fs-400: 0.875rem;
@@ -111,6 +103,7 @@ body {
 
 /* Set core body defaults */
 body {
+  font-family: var(--ff-primary);
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
@@ -153,17 +146,17 @@ svg {
 }
 
 .f-primary-heading {
-  font-family: var(--ff-primary-bold);
+  font-weight: 700;
   font-size: var(--fs-primary-heading);
   line-height: 1.1;
 }
 .f-secondary-heading {
-  font-family: var(--ff-primary-bold);
+  font-weight: 700;
   font-size: var(--fs-secondary-heading);
   line-height: 1.1;
 }
 .f-title {
-  font-family: var(--ff-primary-bold);
+  font-weight: 700;
   font-size: var(--fs-button);
 }
 .f-body {
@@ -172,7 +165,7 @@ svg {
 }
 
 .f-primary-p {
-  font-family: var(--ff-primary-medium);
+  font-weight: 500;
   font-size: var(--fs-650);
   color: var(--clr-paragraph);
 }
@@ -222,7 +215,7 @@ body {
   border-radius: 100vmax;
   padding: .60em 2em;
   color: white;
-  font-family: var(--ff-secondary);
+  font-weight: 700;
   font-size: var(--fs-button);
   letter-spacing: .025em;
   transition: transform 0.4s ease;
@@ -245,7 +238,7 @@ body {
   border-radius: 100vmax;
   padding: .60em 2em;
   color: var(--clr-primary);
-  font-family: var(--ff-secondary);
+  font-weight: 700;
   font-size: var(--fs-button);
   letter-spacing: .025em;
   transition: transform 0.4s ease;

@@ -30,7 +30,7 @@ function Hero() {
                   adopt now
                   <Paw />
                 </button>
-                <button className="btn-secondary">learn more</button>
+                <a className="btn-secondary" href="#adoption-process">learn more</a>
               </div>
             </div>
             <div className="hero-img">

@@ -32,7 +32,7 @@ gap:1rem;
 
 
 /* .hero .hero-buttons a {
-    font-family: var(--ff-secondary);
+    font-weight: 700;
     cursor: pointer;
     font-size: var(--fs-button);
     color: var(--clr-primary);

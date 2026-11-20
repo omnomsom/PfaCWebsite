@@ -52,7 +52,7 @@
 width: 80%;
 }
 .right-column .modal-content h3{
-  font-family: var(--ff-primary-bold);
+  font-weight: 700;
   font-size: var(--fs-700);
   padding-bottom: .2rem;
 }
@@ -60,7 +60,7 @@ width: 80%;
  color:var(--clr-primary);
 }
 .right-column .modal-content p{
-  font-family: var(--ff-primary-medium);
+  font-weight: 500;
   color: var(--clr-paragraph);
 
 }
@@ -81,12 +81,12 @@ width: 80%;
 
 .right-column .modal-content label{
   display: block;
-  font-family: var(--ff-primary-medium);
+  font-weight: 500;
   color: var(--clr-paragraph);
 }
 .right-column .modal-content input{
   display: block;
-  font-family: var(--ff-primary-medium);
+  font-weight: 500;
   color: var(--clr-paragraph);
   width: 100%;
   border-radius: .5rem;

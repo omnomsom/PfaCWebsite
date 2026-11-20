@@ -6,7 +6,7 @@
     border-radius: 100vmax;
     padding: .60em 2em;
     color: white;
-    font-family: var(--ff-secondary);
+    font-weight: 700;
     font-size: var(--fs-button);
     letter-spacing: .025em;
     transition: transform 0.4s ease;
@@ -41,7 +41,7 @@ nav{
 
 .links{
     text-decoration: none;
-    font-family: var(--ff-secondary);
+    font-weight: 700;
     font-size: var(--fs-nav);
     color: var(--clr-text)
 }
