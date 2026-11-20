@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react";
 import { api } from "./api";
 
-const hostedPhotoFolders = new Map([
-  ["654cba99b5d23d6ec8cd4460", "leela"],
-  ["654cbc04b5d23d6ec8cd446c", "jack"],
+const hostedPhotoSets = new Map([
+  ["654cba99b5d23d6ec8cd4460", { folder: "leela", count: 4 }],
+  ["654cbc04b5d23d6ec8cd446c", { folder: "jack", count: 4 }],
+  ["654cbdecb20aec82d8ab6e48", { folder: "zorro", count: 5 }],
 ]);
 
 function withHostedPhotos(animal) {
-  const folder = hostedPhotoFolders.get(animal._id);
+  const hostedPhotos = hostedPhotoSets.get(animal._id);
+  if (!hostedPhotos) return animal;
+
   const hasStoredReplacement = animal.photos?.some(
     (photo) => photo && !/^https:\/\/[^/]+\.fbcdn\.net\//i.test(photo),
   );
 
-  if (!folder || hasStoredReplacement) return animal;
+  if (hasStoredReplacement) return animal;
+
+  const { folder, count } = hostedPhotos;
 
   return {
     ...animal,
-    photos: [1, 2, 3, 4].map((number) => `/photos/${folder}/${folder}-${number}.jpg`),
+    photos: Array.from(
+      { length: count },
+      (_, index) => `/photos/${folder}/${folder}-${index + 1}.jpg`,
+    ),
   };
 }
 
